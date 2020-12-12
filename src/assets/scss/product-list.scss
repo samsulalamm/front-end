@@ -1,0 +1,17 @@
+@import "inc/variables";
+
+.advance-search-options {
+  padding-top: 15px;
+  margin-bottom: 15px;
+  border-top: 1px solid $defaultLighterColor;
+}
+
+.product-list {
+  .product-item {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid $defaultLighterColor;
+    }
+  }
+}

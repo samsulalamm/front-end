@@ -1,0 +1,33 @@
+@import "inc/variables";
+
+.category-list {
+  .category-item {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid $defaultLighterColor;
+    }
+  }
+
+
+
+  .bar-wrapper {
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+
+  .tree-wrapper {
+    height: calc(100% - 25px);
+  }
+
+  .previous {
+    margin-left: 10px;
+  }
+
+  .next,
+  .collapse {
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+
+}

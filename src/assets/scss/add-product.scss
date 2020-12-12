@@ -1,0 +1,54 @@
+@import "inc/variables";
+
+.cateogry-change-modal {
+  width: 100%;
+  max-width: 1024px;
+}
+
+.category-list {
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 3px 15px;
+    width: 100%;
+    justify-content: space-between;
+
+    &.selected {
+      background-color: $defaultLighterColor;
+    }
+
+    .text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.category-row {
+  border: 1px solid $defaultLighterColor;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+
+  .category-col {
+    height: 100%;
+    width: 25%;
+    padding: 5px 0;
+    display: table-cell;
+
+    &:not(:last-child) {
+      border-right: 1px solid $defaultLighterColor;
+    }
+
+    .form-group {
+      padding: 10px 15px;
+      border-bottom: 1px solid $defaultLighterColor;
+      margin-bottom: 0;
+    }
+  }
+}

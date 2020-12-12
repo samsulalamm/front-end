@@ -1,0 +1,30 @@
+.icon-card {
+  border: 1px solid $defaultLighterColor;
+  padding: 25px 20px;
+  position: relative;
+  background-color: #ffffff;
+  margin-bottom: 30px;
+
+  .card-title {
+    font-size: .8rem;
+    text-transform: uppercase;
+    color: $defaultLightColor;
+    margin-bottom: 20px;
+  }
+
+  .card-value {
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: $defaultDarkColor;
+    margin-bottom: 0;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    z-index: 0;
+    opacity: .15;
+  }
+}

@@ -1,0 +1,237 @@
+@import "inc/variables";
+
+.message-block {
+  background-color: #ffffff;
+  height: 580px;
+  display: flex;
+  border: 1px solid darken($defaultLighterColor, 5%);
+
+  .part-header {
+    width: 100%;
+    height: 50px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $defaultLighterColor;
+    padding: 0 15px;
+
+    svg {
+      margin-right: 10px;
+    }
+  }
+
+  .left-part {
+    width: 250px;
+    height: 100%;
+    border-right: 1px solid $defaultLighterColor;
+  }
+
+  .right-part {
+    width: calc(100% - 250px);
+    height: 100%;
+    margin-bottom: 0;
+    line-height: 1;
+  }
+
+  .message-body {
+    height: calc(100% - 101px);
+    background-color: $primaryLighterColor;
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+    padding: 20px;
+
+
+    .message-list {
+      padding: 0;
+      margin: auto 0 0;
+
+      li {
+        display: flex;
+
+        &:not(:last-child) {
+          margin-bottom: 15px;
+        }
+
+        .avatar {
+          width: 44px;
+          height: 44px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          overflow: hidden;
+
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            width: auto;
+          }
+        }
+
+        .msg-details {
+          width: calc(60% - 44px);
+          padding-left: 20px;
+
+          .msg {
+            display: inline-block;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 6px 10px;
+            line-height: 24px;
+          }
+
+          .images {
+            display: flex;
+            margin-top: 12px;
+
+            .img {
+              height: 100px;
+              width: auto;
+              margin: 0 10px 10px 0;
+            }
+          }
+
+          .time {
+            margin-top: 10px;
+            display: block;
+            font-size: .8rem;
+            color: $defaultLightColor;
+          }
+        }
+
+        &.msg-to {
+          padding-left: 40%;
+
+          .msg-details {
+            width: 100%;
+            text-align: right;
+
+            .msg {
+              background-color: $primaryColor;
+              color: #ffffff;
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .write-message {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid darken($defaultLighterColor, 5%);
+
+    label {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      flex: 0 0 50px;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      margin-bottom: 0;
+      border-right: 1px solid $defaultLighterColor;
+
+      svg {
+        display: block;
+      }
+
+      & > input[type="file"] {
+        display: none;
+      }
+    }
+
+    input {
+      height: 50px;
+      background-color: #ffffff;
+      width: 100%;
+      border: 0;
+      padding: 3px 15px;
+
+      &:focus {
+        outline: none;
+        background-color: lighten($defaultLighterColor, 8%);
+      }
+    }
+
+    .btn-send {
+      white-space: nowrap;
+      height: 50px;
+      border: 0 none;
+      width: 50px;
+      flex: 0 0 50px;
+      display: flex;
+      padding: 0 15px;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      background-color: #ffffff;
+
+      &:hover,
+      &:focus {
+        outline: none;
+      }
+
+      svg {
+        display: block;
+      }
+    }
+  }
+}
+
+.messenger-list {
+  height: calc(100% - 50px);
+  overflow-x: hidden;
+
+  .messenger {
+    display: flex;
+    padding: 12px 15px;
+    border-bottom: 1px solid $defaultLighterColor;
+
+    &.active {
+      background-color: lighten($defaultLighterColor, 2%);
+    }
+
+    .avatar {
+      height: 40px;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 50%;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        height: auto;
+        width: auto;
+      }
+    }
+
+    .desc {
+      width: calc(100% - 40px);
+      padding-left: 15px;
+    }
+
+    .name {
+      font-size: 1rem;
+      margin: 0;
+      line-height: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .last-message {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: .875rem;
+    }
+  }
+}

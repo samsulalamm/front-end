@@ -1,0 +1,61 @@
+@import "inc/variables";
+
+.order-table {
+  .order-item {
+    .order-id {
+      font-size: 1rem;
+    }
+
+    .ordered-items {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+
+      li {
+        margin-bottom: 0;
+        line-height: 1.1;
+        font-size: .8rem;
+      }
+    }
+  }
+
+  .order-date {
+    display: block;
+    line-height: 1.2;
+  }
+
+  .order-time {
+    display: block;
+    color: darken($defaultLighterColor, 20%);
+    line-height: 1.2;
+  }
+}
+
+.desc-header-nav {
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  display: flex;
+  list-style-type: none;
+  border-bottom: 1px solid $defaultLighterColor;
+
+  li > span {
+    display: block;
+    padding: 10px 30px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  li.active > span {
+    border-color: $primaryColor;
+    color: $primaryColor;
+  }
+}
+
+.block-tab-container {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

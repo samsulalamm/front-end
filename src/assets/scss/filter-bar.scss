@@ -1,0 +1,16 @@
+@import "inc/variables";
+
+.filter-bar {
+  // background-color: $orangeColor;
+  position: fixed;
+  top: 60px;
+  left: 280px;
+  width: calc(100% - 280px);
+  height: 50px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 777;
+  border-bottom: 1px solid $defaultLighterColor;
+}

@@ -1,0 +1,65 @@
+@import "inc/variables";
+
+.dashboard-content {
+  padding-top: 40px;
+}
+
+.stats-cards {
+  display: flex;
+  width: 100%;
+
+  .stats-card {
+    margin-right: 30px;
+    margin-bottom: 15px;
+
+    .title {
+      display: block;
+      font-size: .8rem;
+      letter-spacing: .1rem;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: $defaultDarkColor;
+    }
+  }
+}
+
+.info-stats-list {
+  .info-stats {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $defaultColor;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $defaultLighterColor;
+    }
+
+    &:hover {
+      text-decoration: none;
+      background-color: lighten($defaultLighterColor, 7%);
+    }
+
+    .title {
+      font-size: 1rem;
+      margin-bottom: 5px;
+      color: $defaultDarkColor;
+    }
+
+    .sub-title {
+      margin-bottom: 0;
+      color: $defaultLightColor;
+      line-height: 1.4;
+    }
+
+    .stats-value {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: $purpleColor;
+    }
+  }
+}

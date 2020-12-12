@@ -1,0 +1,97 @@
+@import "inc/variables";
+
+.delivery-progress-timeline {
+  background-color: #ffffff;
+  padding: 20px 0;
+  position: relative;
+  margin-bottom: 30px;
+
+  &::before {
+    content: '';
+  }
+
+  .timeline-inner {
+    display: flex;
+  }
+
+  .progress-line {
+    width: calc(83.333333% - 20px);
+    height: 3px;
+    display: block;
+    position: absolute;
+    top: 75px;
+    background-color: $defaultLighterColor;
+    left: calc(20px + 8.3333333333333333%);
+
+    .progress-completed {
+      height: 3px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      background-color: #bd4147;
+    }
+  }
+
+  .progress-block {
+    width: 16.666667%;
+    flex: 0 0 16.666667%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    padding: 10px;
+
+    &:not(:first-child) {
+      &::after {
+        content: '';
+        height: 3px;
+        position: absolute;
+        top: 55px;
+        right: 50%;
+        width: 100%;
+        background-color: transparent;
+      }
+    }
+
+    span {
+      display: block;
+    }
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 51px;
+      left: 50%;
+      transform: translateX(-3px);
+      background-color: $defaultLighterColor;
+      z-index: 5;
+      border-radius: 50%;
+    }
+
+    &.completed {
+      &::after {
+        background-color: $primaryColor;
+      }
+
+      .circle {
+        background-color: $primaryColor;
+      }
+    }
+
+    .date {
+      margin-bottom: 40px;
+    }
+
+    .text {
+      h4 {
+        font-size: 1rem;
+      }
+
+      p {
+        margin: 5px 0 0;
+        line-height: 1.4;
+      }
+    }
+  }
+}

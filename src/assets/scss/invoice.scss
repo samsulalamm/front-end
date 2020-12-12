@@ -1,0 +1,51 @@
+@import "inc/variables";
+
+.invoice-table {
+  width: 100%;
+
+  .store-name {
+    font-size: .8rem;
+    text-transform: uppercase;
+    color: $secondaryColor;
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    svg {
+      display: block;
+    }
+
+    .icon {
+      margin-right: 5px;
+    }
+  }
+
+  .brand-logo {
+    height: 50px;
+  }
+
+  .v-top td {
+    vertical-align: top;
+  }
+
+  .v-middle td {
+    vertical-align: middle;
+  }
+
+  .invoice-title {
+    padding: 15px 0;
+    font-size: 1.5rem;
+    color: $primaryColor;
+  }
+
+  table {
+    width: 100%;
+    line-height: 1.4;
+  }
+
+  .invoice-title-alt {
+    font-size: 1.1rem;
+  }
+}
