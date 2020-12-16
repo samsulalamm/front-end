@@ -16,25 +16,41 @@ class DataPoint extends Component {
     dLoading: true,
     dDfLodaing: true,
     columnDefs: [
-      {headerName: "Data Point", field: "data_point", sortable: true, filter: true},
-      {headerName: "Data Point Definitions", field: "total_definitions", sortable: true, filter: true},
-      {headerName: "Entity", field: "entity", sortable: true, filter: true},
-      {headerName: "Parent Entity", field: "parent_entity", sortable: true, filter: true},
-      {headerName: "Owner", field: "owner", sortable: true, filter: true},
-      {headerName: "Responsible Role", field: "responsible_role", sortable: true, filter: true},
-      {headerName: "DW Server", field: "dw_server", sortable: true, filter: true},
-      {headerName: "DW Database", field: "dw_database", sortable: true, filter: true},
-      {headerName: "Table Name", field: "table_name", sortable: true, filter: true},
-      {headerName: "DW Field Name", field: "dw_field_name", sortable: true, filter: true},
+      {headerName: "Data Point", field: "data_point", sortable: true, filter: true, editable:true},
+      {headerName: "Data Point Definitions", field: "total_definitions", sortable: true, filter: true, editable:true},
+      {headerName: "Entity", field: "entity", sortable: true, filter: true, editable:true},
+      {headerName: "Parent Entity", field: "parent_entity", sortable: true, filter: true, editable:true},
+      {headerName: "Owner", field: "owner", sortable: true, filter: true, editable:true},
+      {headerName: "Responsible Role", field: "responsible_role", sortable: true, filter: true, editable:true},
+      {headerName: "DW Server", field: "dw_server", sortable: true, filter: true, editable:true},
+      {headerName: "DW Database", field: "dw_database", sortable: true, filter: true, editable:true},
+      {headerName: "Table Name", field: "table_name", sortable: true, filter: true, editable:true},
+      {headerName: "DW Field Name", field: "dw_field_name", sortable: true, filter: true, editable:true},
     ],
 
     definitioncolumnDefs: [
-      {headerName: "Data Point Definitions", field: "data_point_definition", sortable: true, filter: true},
-      // {headerName: "Data Point", field: "data_point", sortable: true, filter: true},
-      {headerName: "Entity", field: "entity", sortable: true, filter: true},
-      {headerName: "Parent Entity", field: "parent_entity", sortable: true, filter: true},
-      {headerName: "Lookup Values", field: "look_up_values", sortable: true, filter: true},
-      {headerName: "Lookup Value Definitions", field: "look_up_value_definitions", sortable: true, filter: true},
+      {
+        headerName: "Data Point Definitions",
+        field: "data_point_definition",
+        sortable: true,
+        filter: true,
+      },
+      {headerName: "Data Point", field: "data_point", sortable: true, filter: true, editable:true},
+      {headerName: "Owner", field: "owner", sortable: true, filter: true, editable:true},
+      {headerName: "Responsible Role", field: "responsible_role", sortable: true, filter: true, editable:true},
+      {headerName: "DW Server", field: "dw_server", sortable: true, filter: true, editable:true},
+      {headerName: "DW Database", field: "dw_database", sortable: true, filter: true, editable:true},
+      {headerName: "Table Name", field: "table_name", sortable: true, filter: true, editable:true},
+      {headerName: "DW Field Name", field: "dw_field_name", sortable: true, filter: true, editable:true},
+      {headerName: "Data Type", field: "data_type", sortable: true, filter: true, editable:true},
+      {headerName: "Read Write", field: "read_write", sortable: true, filter: true, editable:true},
+      {headerName: "Definition Stakeholder", field: "definition_stakeholder", sortable: true, filter: true, editable:true},
+      {headerName: "Ongoing Definition Owner", field: "ongoing_definition_owner", sortable: true, filter: true, editable:true},
+      {headerName: "Source", field: "source", sortable: true, filter: true, editable:true},
+      {headerName: "Entity", field: "entity", sortable: true, filter: true, editable:true},
+      {headerName: "Parent Entity", field: "parent_entity", sortable: true, filter: true, editable:true},
+      {headerName: "Lookup Values", field: "look_up_values", sortable: true, filter: true, editable:true},
+      {headerName: "Lookup Value Definitions", field: "look_up_value_definitions", sortable: true, filter: true, editable:true},
     ],
 
     rowData: [],
@@ -73,7 +89,18 @@ class DataPoint extends Component {
         await res.datapointdefinitions.forEach(item2 => {
           const row2 = {
             data_point_definition: item2?.data_point_definition,
-            // data_point: item2?.point_data.data_point,
+            data_point: item2?.point_data.data_point,
+            owner: item2?.point_data.owner,
+            responsible_role: item2.responsible_role,
+            dw_server: item2?.point_data.dw_server,
+            dw_database: item2?.point_data.dw_database,
+            table_name: item2?.point_data.table_name,
+            dw_field_name: item2?.point_data.dw_field_name,
+            data_type: item2?.point_data.data_type,
+            read_write: item2?.point_data.read_write,
+            definition_stakeholder: item2?.point_data.definition_stakeholder,
+            ongoing_definition_owner: item2?.point_data.ongoing_definition_owner,
+            source: item2?.point_data.source,
             entity: item2.entity,
             parent_entity: item2.parent_entity,
             look_up_values: item2.look_up_values,
@@ -89,6 +116,14 @@ class DataPoint extends Component {
         console.log('Error Message: ', errMsg)
       })
   }
+
+  onGridReady = (params) => {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+
+    console.log(params);
+  };
+
 
   onFileChange = event => {
     this.setState({selectedFile: event.target.files[0]});
@@ -164,6 +199,22 @@ class DataPoint extends Component {
   render() {
     const {formData} = this.state;
 
+   const gridOptions = {
+
+      columnDefs: this.state.columnDefs,
+      defaultColDef: {
+        flex: 1
+      },
+      rowData: this.state.rowData,
+      onCellEditingStarted: function (event) {
+        console.log('cellEditingStarted');
+      },
+      onCellEditingStopped: function (event) {
+        console.log('cellEditingStopped');
+      }
+    };
+
+
     return (
       <App layout="boxed">
         <div className="page-header">
@@ -213,7 +264,9 @@ class DataPoint extends Component {
           >
             <AgGridReact
               columnDefs={this.state.columnDefs}
-              rowData={this.state.rowData}>
+              onGridReady={this.onGridReady}
+              rowData={this.state.rowData}
+            >
             </AgGridReact>
           </div>
         }
@@ -234,7 +287,8 @@ class DataPoint extends Component {
           >
             <AgGridReact
               columnDefs={this.state.definitioncolumnDefs}
-              rowData={this.state.rowDataDefinitions}>
+              rowData={this.state.rowDataDefinitions}
+            >
             </AgGridReact>
 
           </div>
