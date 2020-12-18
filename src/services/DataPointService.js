@@ -20,6 +20,27 @@ export const getDataPoint = () => {
   })
 }
 
+export const updateData = (data) => {
+  return new Promise((resolve, reject) => {
+    axios.put(API_BASE_URL + '/updateData', data ,{
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => {
+        if (res.data.meta.status === 200) {
+          resolve(res.data)
+        } else {
+          reject(res.data.message)
+        }
+      })
+      .catch(err => {
+        reject('Something went wrong')
+      })
+  })
+}
+
 export const importDataPoint = (data) => {
   return new Promise((resolve, reject) => {
     axios.post(API_BASE_URL + '/import', data, {
@@ -28,7 +49,7 @@ export const importDataPoint = (data) => {
     })
       .then(res => {
         if (res.data.meta.status === 200) {
-          resolve(res.data.response)
+          resolve(res.data)
         } else {
           reject(res.data.response)
         }
